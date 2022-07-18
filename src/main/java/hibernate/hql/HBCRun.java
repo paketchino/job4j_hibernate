@@ -81,7 +81,7 @@ public class HBCRun {
         session.beginTransaction();
         Query query = session.createQuery("from Candidate c where c.name = :fName");
         query.setParameter("fName", name);
-        System.out.println(query.uniqueResult());
+        System.out.println(query);
         session.getTransaction().commit();
         session.close();
     }
