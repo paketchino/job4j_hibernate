@@ -15,5 +15,8 @@
 
         <mapping class="hibernate.hql.Student"/>
         <mapping class="hibernate.hql.Candidate"/>
+
+        <mapping class="model.Car"/>
+        <mapping class="model.Mark"/>
     </session-factory>
 </hibernate-configuration>
