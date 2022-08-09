@@ -17,9 +17,17 @@ public class HbnRun {
             Session session = sf.openSession();
             session.beginTransaction();
 
+            Car car2 = Car.of(2, "Porche");
+            Car car3 = Car.of(3, "Tesla");
+            Car car4 = Car.of(4, "Lam");
+            Car car5 = Car.of(5, "BMW");
+            session.save(car2);
+            session.save(car3);
+            session.save(car4);
+            session.save(car5);
+
             Mark mark = Mark.of(1, "Danger");
 
-            mark.addCar(session.load(Car.class, 1));
             mark.addCar(session.load(Car.class, 2));
             mark.addCar(session.load(Car.class, 3));
             mark.addCar(session.load(Car.class, 4));
