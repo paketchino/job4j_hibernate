@@ -8,6 +8,6 @@ create table if not exists c_marks
 create table if not exists cars
 (
     id serial primary key,
-    name varchar(100),
-    c_marks_id int references c_marks(id)
+    name varchar(100)
+
 );
