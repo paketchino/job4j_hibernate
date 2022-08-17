@@ -42,7 +42,7 @@ public class HbmRunVacancy {
             session.save(candidate1);
              */
 
-            List list = session.createQuery("select distinct db from DatabaseVacancy db " +
+            List list = session.createQuery("select db from DatabaseVacancy db " +
                     "join fetch db.vacancies").list();
 
             session.getTransaction().commit();
