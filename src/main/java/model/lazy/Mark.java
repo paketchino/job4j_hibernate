@@ -1,7 +1,6 @@
-package model;
+package model.lazy;
 
 import javax.persistence.*;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
@@ -15,12 +14,11 @@ public class Mark {
 
     private String name;
 
-    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<Car> cars = new ArrayList<>();
+    @OneToMany(mappedBy = "mark", fetch = FetchType.EAGER)
+    private List<Car> cars;
 
-    public static Mark of(int id, String name) {
+    public static Mark of(String name) {
         Mark mark = new Mark();
-        mark.id = id;
         mark.name = name;
         return mark;
     }
@@ -62,12 +60,21 @@ public class Mark {
             return false;
         }
         Mark mark = (Mark) o;
-        return id == mark.id
-                && Objects.equals(name, mark.name) && Objects.equals(cars, mark.cars);
+        return id == mark.id && Objects.equals(name, mark.name)
+                && Objects.equals(cars, mark.cars);
     }
 
     @Override
     public int hashCode() {
         return Objects.hash(id, name, cars);
+    }
+
+
+    @Override
+    public String toString() {
+        return "Mark{" +
+                "id=" + id +
+                ", name='" + name + '\''
+                + '}';
     }
 }

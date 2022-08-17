@@ -1,26 +1,23 @@
-package model;
-
+package tomany;
 
 import javax.persistence.*;
 import java.util.Objects;
 
 @Entity
-@Table(name = "cars")
-public class Car {
+@Table(name = "users")
+public class User {
 
     @Id
-    @GeneratedValue (strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
     private String name;
 
-    public static Car of(int id, String name) {
-        Car car = new Car();
-        car.id = id;
-        car.name = name;
-        return car;
+    public static User of(String name) {
+        User user = new User();
+        user.name = name;
+        return user;
     }
-
 
     public int getId() {
         return id;
@@ -40,14 +37,10 @@ public class Car {
 
     @Override
     public boolean equals(Object o) {
-        if (this == o) {
-            return true;
-        }
-        if (o == null || getClass() != o.getClass()) {
-            return false;
-        }
-        Car car = (Car) o;
-        return id == car.id && Objects.equals(name, car.name);
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        User user = (User) o;
+        return id == user.id;
     }
 
     @Override

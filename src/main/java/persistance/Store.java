@@ -1,6 +1,6 @@
 package persistance;
 
-import model.Author;
+import model.manytomany.Author;
 import model.Book;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;

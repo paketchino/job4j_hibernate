@@ -1,4 +1,4 @@
-package model;
+package model.manytomany;
 
 import javax.persistence.*;
 import java.util.Objects;

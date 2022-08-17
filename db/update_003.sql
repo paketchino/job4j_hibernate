@@ -13,6 +13,6 @@ create table if not exists addresses
 (
     id serial primary key,
     street varchar(60) not null,
-    number varchar (10) not null,
-    persons_id int not null references persons(id)
+    number varchar (10) not null
+
 );

@@ -1,3 +1,7 @@
+drop table c_marks cascade;
+
+drop table cars cascade;
+
 create table if not exists c_marks
 (
     id serial primary key,

@@ -1,9 +1,7 @@
-package model;
+package model.manytomany;
 
 import javax.persistence.*;
-import java.util.HashSet;
 import java.util.Objects;
-import java.util.Set;
 
 @Entity
 @Table (name = "authors")
@@ -15,8 +13,6 @@ public class Author {
 
     private String name;
 
-    @ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
-    private Set<Book> books = new HashSet<>();
 
     public static Author of(String name) {
         Author author = new Author();
@@ -24,17 +20,6 @@ public class Author {
         return author;
     }
 
-    public Set<Book> getBooks() {
-        return books;
-    }
-
-    public void setBooks(Set<Book> books) {
-        this.books = books;
-    }
-
-    public void addBook(Book book) {
-        this.books.add(book);
-    }
 
     public int getId() {
         return id;
