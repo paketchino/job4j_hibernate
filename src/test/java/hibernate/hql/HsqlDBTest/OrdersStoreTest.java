@@ -20,12 +20,12 @@ class OrdersStoreTest {
 
     @Before
     public void setUp() throws SQLException {
+
         pool.setDriverClassName("org.hsqldb.jdbcDriver");
         pool.setUrl("jdbc:hsqldb:mem:tests;sql.syntax_pgs=true");
-        pool.setUsername("postgres");
-        pool.setPassword("12345");
+        pool.setUsername("sa");
+        pool.setPassword("");
         pool.setMaxTotal(2);
-        pool.setDriverClassName("org.postgresql.Driver");
         StringBuilder builder = new StringBuilder();
         try (BufferedReader br = new BufferedReader(
                 new InputStreamReader(new FileInputStream("./db/update_006.sql")))
@@ -50,16 +50,15 @@ class OrdersStoreTest {
         assertThat(all.get(0).getId(), is(1));
     }
 
-
     @Test
-    void save() {
-    }
+    public void whenSaveOrderAndFindById() {
+        OrdersStore store = new OrdersStore(pool);
 
-    @Test
-    void findAll() {
-    }
+        Order order = Order.of("name2", "description2");
+        store.save(order);
 
-    @Test
-    void findById() {
+        Order orderById = store.findById(order.getId());
+
+        assertThat(orderById, is(2));
     }
 }
