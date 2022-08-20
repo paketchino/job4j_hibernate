@@ -20,7 +20,6 @@ class OrdersStoreTest {
 
     @Before
     public void setUp() throws SQLException {
-
         pool.setDriverClassName("org.hsqldb.jdbcDriver");
         pool.setUrl("jdbc:hsqldb:mem:tests;sql.syntax_pgs=true");
         pool.setUsername("sa");
