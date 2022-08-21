@@ -25,7 +25,7 @@
         <mapping class="model.DatabaseVacancy"/>
         <mapping class="model.Candidate"/>
 
-        <mapping class="hibernate.hql.HsqlDBTest.OrdersStore"/>
+        <mapping class="hibernate.hql.hsqidbtest.OrdersStore"/>
 
     </session-factory>
 </hibernate-configuration>
