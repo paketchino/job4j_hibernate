@@ -1,4 +1,4 @@
-package hibernate.hql.hsqidbtest;
+package hibernate.hql.hsqidb;
 
 import org.apache.commons.dbcp2.BasicDataSource;
 

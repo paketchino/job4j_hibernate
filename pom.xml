@@ -25,16 +25,19 @@
 
 	<profiles>
 		<profile>
-			<id>tests</id>
+			<id>test</id>
 			<properties>
-				<db.url>jdbc:h2:~/testdb;MODE=PostgreSQL;CASE_INSENSITIVE_IDENTIFIERS=TRUE;</db.url>
-				<db.username></db.username>
-				<db.password></db.password>
-				<db.driver>org.h2.Driver</db.driver>
+				<liquibase.config>db/liquibase_test.properties</liquibase.config>
 			</properties>
 			<activation>
 				<activeByDefault>true</activeByDefault>
 			</activation>
+		</profile>
+		<profile>
+			<id>production</id>
+			<properties>
+				<liquibase.config>db/liquibase.properties</liquibase.config>
+			</properties>
 		</profile>
 	</profiles>
 
@@ -79,6 +82,12 @@
 			<version>42.2.12</version>
 		</dependency>
 		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>4.12</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
 			<groupId>org.junit.jupiter</groupId>
 			<artifactId>junit-jupiter-engine</artifactId>
 			<version>5.8.0-M1</version>
@@ -112,9 +121,21 @@
 	<build>
 		<plugins>
 			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-checkstyle-plugin</artifactId>
-				<version>3.1.1</version>
+				<groupId>org.liquibase</groupId>
+				<artifactId>liquibase-maven-plugin</artifactId>
+				<version>4.15.0</version>
+				<configuration>
+					<propertyFile>${liquibase.config}</propertyFile>
+				</configuration>
+				<executions>
+					<execution>
+						<phase>process-resources</phase>
+						<goals>
+							<goal>clearCheckSums</goal>
+							<goal>update</goal>
+						</goals>
+					</execution>
+				</executions>
 			</plugin>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>

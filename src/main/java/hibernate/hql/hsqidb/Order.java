@@ -1,4 +1,4 @@
-package hibernate.hql.hsqidbtest;
+package hibernate.hql.hsqidb;
 
 import java.sql.Timestamp;
 import java.util.Objects;
